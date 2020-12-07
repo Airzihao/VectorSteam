@@ -9,6 +9,7 @@ trait VectorSim {
 }
 
 object CosineDis {
+
 }
 
 object EuclideanDis {
