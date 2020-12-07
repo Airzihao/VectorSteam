@@ -21,9 +21,9 @@ class VectorGeneratorTest extends TestBase {
   def performanceTest() = {
     val times = math.pow(10, 4).toInt
     print("genVector:")
-    timing(for (i<-1 to times) generator.genVector(192))
+    timing(for (i<-1 to times) generator.genVector(256))
     print("genArr:")
-    timing(for (i<-1 to times) generator.genArray(192))
+    timing(for (i<-1 to times) generator.genArray(256))
   }
 
   @Test
