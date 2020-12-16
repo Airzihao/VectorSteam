@@ -1,6 +1,8 @@
-package VetcorDistanceTest
+package fun.airzihao.VectorDistanceTest
 
-import VectorDistance.{ChebyshevDis, ManhattanDis}
+import fun.airzihao.VectorDistance.ChebyshevDis
+import fun.airzihao.VectorDistance.ManhattanDis
+
 import org.junit.{Assert, Test}
 
 /**
@@ -9,6 +11,7 @@ import org.junit.{Assert, Test}
  * @Date: Created at 8:49 2020/12/16
  * @Modified By:
  */
+
 class MinkowskiDisTest {
   val v0 = Vector(0.0, 0)
   val v1 = Vector(1.0, 1)
@@ -16,10 +19,10 @@ class MinkowskiDisTest {
   val v3 = Vector(1.0, 0, 0)
   val v4 = Vector(0, 1.0, 0)
   val v5 = Vector(1.0, 1, 0)
-
 }
 
 class ChebyshevDisTest extends MinkowskiDisTest {
+
   @Test
   def test(): Unit ={
     Assert.assertEquals(1, ChebyshevDis.chebyDis(v0, v1), 0.001)
@@ -31,8 +34,10 @@ class ChebyshevDisTest extends MinkowskiDisTest {
 }
 
 class ManhattanDis extends MinkowskiDisTest {
+
   @Test
   def test(): Unit ={
+//    val man = ManhattanDis
     Assert.assertEquals(0, ManhattanDis.manhattanDis(v1, v1), 0.001)
     Assert.assertEquals(7, ManhattanDis.manhattanDis(v0, v2), 0.001)
     Assert.assertEquals(7, ManhattanDis.manhattanDis(v2, v0), 0.001)

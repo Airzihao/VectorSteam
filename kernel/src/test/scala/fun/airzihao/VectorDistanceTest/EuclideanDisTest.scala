@@ -1,6 +1,6 @@
-package VetcorDistanceTest
+package fun.airzihao.VectorDistanceTest
 
-import VectorDistance.EuclideanDis
+import fun.airzihao.VectorDistance.EuclideanDis
 import org.junit.{Assert, Test}
 
 /**

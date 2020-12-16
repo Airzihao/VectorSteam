@@ -1,6 +1,6 @@
-package VetcorDistanceTest
+package fun.airzihao.VectorDistanceTest
 
-import VectorDistance.CosineSim
+import fun.airzihao.VectorDistance.CosineSim
 import org.junit.{Assert, Test}
 
 /**

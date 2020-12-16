@@ -1,4 +1,4 @@
-package VectorDistance
+package fun.airzihao.VectorDistance
 
 /**
  * @Author: Airzihao
