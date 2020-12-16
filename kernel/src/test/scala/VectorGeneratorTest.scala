@@ -1,12 +1,14 @@
 import org.junit.{Assert, Test}
 
+import Utils.timing
+
 /**
  * @Author: Airzihao
  * @Description:
  * @Date: Created at 13:21 2020/12/7
  * @Modified By:
  */
-class VectorGeneratorTest extends TestBase {
+class VectorGeneratorTest {
   val generator = VectorGenerator
 
   @Test
@@ -23,7 +25,7 @@ class VectorGeneratorTest extends TestBase {
     print("genVector:")
     timing(for (i<-1 to times) generator.genVector(256))
     print("genArr:")
-    timing(for (i<-1 to times) generator.genArray(256))
+    timing(for (i<-1 to times) generator.genVecArray(256))
   }
 
   @Test
@@ -33,7 +35,5 @@ class VectorGeneratorTest extends TestBase {
       performanceTest()
     }
   }
-
-
 
 }
