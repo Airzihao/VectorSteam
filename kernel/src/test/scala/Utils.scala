@@ -5,16 +5,13 @@
  * @Modified By:
  */
 
-object VectorGenerator {
 
-  def genVector(dim: Int): Vector[Double] = {
-    val arr = new Array[Double](dim)
-    arr.map(item => scala.util.Random.nextDouble()*2 - 1).toVector
+object Utils {
+  def timing[T](f: => T): T = {
+    val t1 = System.currentTimeMillis()
+    val t = f
+    val t2 = System.currentTimeMillis()
+    println(s"time cost: ${t2 - t1} ms")
+    t
   }
-
-  def genArray(dim: Int): Array[Double] = {
-    val arr = new Array[Double](dim)
-    arr.map(item => scala.util.Random.nextDouble()*2 - 1)
-  }
-
 }
