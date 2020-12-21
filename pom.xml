@@ -11,6 +11,7 @@
     <modules>
         <module>kernel</module>
         <module>server</module>
+        <module>performance</module>
     </modules>
 
     <properties>
