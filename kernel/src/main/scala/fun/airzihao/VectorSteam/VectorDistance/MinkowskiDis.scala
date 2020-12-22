@@ -1,4 +1,4 @@
-package fun.airzihao.VectorDistance
+package fun.airzihao.VectorSteam.VectorDistance
 
 /**
  * @Author: Airzihao
@@ -13,14 +13,14 @@ object MinkowskiDis {
 
 object ChebyshevDis {
   //  max( | x2-x1 | , | y2-y1 | )
-  def chebyDis(vector1: Vector[Double], vector2: Vector[Double]): Double = {
+  def chebyDis(vector1: Array[Double], vector2: Array[Double]): Double = {
     vector1.zip(vector2).map(pair => math.abs(pair._1 - pair._2)).max
   }
 }
 
 object ManhattanDis {
   //  sum( | x2-x1 | , | y2-y1 | )
-  def manhattanDis(vector1: Vector[Double], vector2: Vector[Double]): Double = {
+  def manhattanDis(vector1: Array[Double], vector2: Array[Double]): Double = {
     vector1.zip(vector2).map(pair => math.abs(pair._1 - pair._2)).sum
   }
 }

@@ -1,4 +1,4 @@
-package fun.airzihao.VectorDistance
+package fun.airzihao.VectorSteam.VectorDistance
 
 /**
  * @Author: Airzihao
@@ -7,24 +7,24 @@ package fun.airzihao.VectorDistance
  * @Modified By:
  */
 object EuclideanDis {
-  def eucDis(vector1: Vector[Double], vector2: Vector[Double]): Double = {
+  def eucDis(vector1: Array[Double], vector2: Array[Double]): Double = {
     val squareSum = vector1.zip(vector2).map( pair => math.pow((pair._1 - pair._2), 2)).sum
     math.sqrt(squareSum)
   }
 
-  def stdEucDis(vector1: Vector[Double], vector2: Vector[Double]): Double = {
+  def stdEucDis(vector1: Array[Double], vector2: Array[Double]): Double = {
     val stdVector1 = stdVector(vector1)
     val stdVector2 = stdVector(vector2)
     eucDis(stdVector1, stdVector2)
   }
 
-  def stdVector(vector: Vector[Double]): Vector[Double] = {
+  def stdVector(vector: Array[Double]): Array[Double] = {
     val length = eucLength(vector)
-    if (length == 0) vector.map(item => 0.0)
-    else vector.map(item => item/length)
+    if (length == 0) vector
+    else vector.map(item => (item/length).toDouble)
   }
 
-  def eucLength(vector: Vector[Double]): Double = {
+  def eucLength(vector: Array[Double]): Double = {
     val squareSum: Double = vector.map(elem => elem*elem).sum
     math.sqrt(squareSum)
   }

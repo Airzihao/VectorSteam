@@ -1,6 +1,6 @@
+import fun.airzihao.VectorSteam.Utils.Utils.timing
+import fun.airzihao.VectorSteam.Utils.VectorGenerator
 import org.junit.{Assert, Test}
-
-import Utils.timing
 
 /**
  * @Author: Airzihao
@@ -21,7 +21,8 @@ class VectorGeneratorTest {
 
   @Test
   def performanceTest() = {
-    val times = math.pow(10, 4).toInt
+    // vec: 5888ms, arr: 5438ms
+    val times = math.pow(10, 6).toInt
     print("genVector:")
     timing(for (i<-1 to times) generator.genVector(256))
     print("genArr:")

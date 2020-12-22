@@ -1,3 +1,5 @@
+package fun.airzihao.VectorSteam.Utils
+
 /**
  * @Author: Airzihao
  * @Description:
@@ -11,6 +13,7 @@ object Utils {
     val t1 = System.currentTimeMillis()
     val t = f
     val t2 = System.currentTimeMillis()
+    //    logger.debug(s"time cost: ${t2 - t1} ms")
     println(s"time cost: ${t2 - t1} ms")
     t
   }
