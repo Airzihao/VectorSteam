@@ -20,7 +20,7 @@ class VectorSerializerTest {
   @Test
   def correctTest(): Unit = {
     val bytes = serializer.serialize(vec)
-    val vec2: Array[Double] = serializer.deserialize(bytes)
+    val vec2: Array[Double] = serializer.deserializeArray(bytes)
     Assert.assertArrayEquals(vec, vec2, 0.0001)
   }
 
@@ -34,7 +34,7 @@ class VectorSerializerTest {
     }
     val f2 = Future{
       println("deserialize")
-      timing(for(i<-1 to repeatCount) serializer.deserialize(bytes))
+      timing(for(i<-1 to repeatCount) serializer.deserializeArray(bytes))
     }
     Await.ready(f1, 10.seconds)
     Await.ready(f2, 10.seconds)
