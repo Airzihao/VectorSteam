@@ -12,5 +12,13 @@
     <artifactId>tools</artifactId>
     <version>0.0.1</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>fun.airzihao</groupId>
+            <artifactId>kernel</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
