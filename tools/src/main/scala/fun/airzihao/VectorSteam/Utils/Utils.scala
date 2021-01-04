@@ -17,4 +17,9 @@ object Utils {
     println(s"time cost: ${t2 - t1} ms")
     t
   }
+
+  def vecLength(dims: Int): Int = {
+    // id:Long, len: Int, arr[Float]
+    8 + 4 + 4*dims
+  }
 }
