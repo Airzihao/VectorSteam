@@ -1,6 +1,7 @@
 import fun.airzihao.VectorSteam.Utils.Utils.timing
 import fun.airzihao.VectorSteam.Utils.VectorGenerator
-import org.junit.{Assert, Test}
+import org.junit.runners.MethodSorters
+import org.junit.{Assert, FixMethodOrder, Test}
 
 /**
  * @Author: Airzihao
@@ -8,6 +9,7 @@ import org.junit.{Assert, Test}
  * @Date: Created at 13:21 2020/12/7
  * @Modified By:
  */
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class VectorGeneratorTest {
   val generator = VectorGenerator
 
@@ -15,7 +17,7 @@ class VectorGeneratorTest {
   def testVector() = {
     val v_8 = generator.genVector(8)
     Assert.assertEquals(8, v_8.length)
-    Assert.assertEquals(true, v_8.isInstanceOf[Vector[Double]])
+    Assert.assertEquals(true, v_8.isInstanceOf[Vector[Float]])
     println(v_8)
   }
 

@@ -8,4 +8,4 @@ package fun.airzihao.VectorSteam.kernel
  */
 
 //
-case class VecMolecule(id: Long, vec: Array[Double])
+case class VecMolecule(id: Long, vec: Array[Float])

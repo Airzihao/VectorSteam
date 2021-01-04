@@ -8,14 +8,14 @@ package fun.airzihao.VectorSteam.Utils
  */
 object VectorGenerator {
 
-  def genVector(dim: Int): Vector[Double] = {
-    val arr = new Array[Double](dim)
-    arr.map(item => scala.util.Random.nextDouble() * 2 - 1).toVector
+  def genVector(dim: Int): Vector[Float] = {
+    val arr = new Array[Float](dim)
+    arr.map(item => scala.util.Random.nextFloat() * 2 - 1).toVector
   }
 
-  def genVecArray(dim: Int): Array[Double] = {
-    val arr = new Array[Double](dim)
-    arr.map(item => scala.util.Random.nextDouble() * 2 - 1)
+  def genVecArray(dim: Int): Array[Float] = {
+    val arr = new Array[Float](dim)
+    arr.map(item => scala.util.Random.nextFloat() * 2 - 1)
   }
 
 }

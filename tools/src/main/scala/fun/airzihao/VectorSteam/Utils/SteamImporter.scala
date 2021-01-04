@@ -16,7 +16,7 @@ import scala.collection.mutable.ArrayBuffer
  * @Modified By:
  */
 class SteamImporter(file: File, dims: Int) {
-  val stepLength: Int = 8 + 4 + 8*dims
+  val stepLength: Int = 8 + 4 + 4*dims
 
   def getVecMolecules: Iterator[VecMolecule] = {
     val bis = new BufferedInputStream(new FileInputStream(file), 10 * 1024 * 1024)

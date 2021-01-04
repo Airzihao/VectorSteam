@@ -12,10 +12,10 @@ import io.netty.buffer.{ByteBuf, ByteBufAllocator, Unpooled}
 object VectorSerializer {
   val allocator: ByteBufAllocator = ByteBufAllocator.DEFAULT
 
-  def serialize(vec: Array[Double]): Array[Byte] = {
+  def serialize(vec: Array[Float]): Array[Byte] = {
     val byteBuf: ByteBuf = allocator.buffer()
     byteBuf.writeInt(vec.length)
-    vec.foreach(byteBuf.writeDouble(_))
+    vec.foreach(byteBuf.writeFloat(_))
     val bytes = _exportBytes(byteBuf)
     byteBuf.release()
     bytes
@@ -25,17 +25,17 @@ object VectorSerializer {
     val byteBuf: ByteBuf = allocator.buffer()
     byteBuf.writeLong(vecMolecule.id)
     byteBuf.writeInt(vecMolecule.vec.length)
-    vecMolecule.vec.foreach(byteBuf.writeDouble(_))
+    vecMolecule.vec.foreach(byteBuf.writeFloat(_))
     val bytes = _exportBytes(byteBuf)
     byteBuf.release()
     bytes
   }
 
-  def deserializeArray(bytes: Array[Byte]): Array[Double] = {
+  def deserializeArray(bytes: Array[Byte]): Array[Float] = {
     val byteBuf: ByteBuf = Unpooled.wrappedBuffer(bytes)
     val length: Int = byteBuf.readInt()
-    val array: Array[Double] = new Array[Double](length)
-    val vec: Array[Double] = array.map(_ => byteBuf.readDouble())
+    val array: Array[Float] = new Array[Float](length)
+    val vec: Array[Float] = array.map(_ => byteBuf.readFloat())
     byteBuf.release()
     vec
   }
@@ -44,8 +44,8 @@ object VectorSerializer {
     val byteBuf: ByteBuf = Unpooled.wrappedBuffer(bytes)
     val id: Long = byteBuf.readLong()
     val length: Int = byteBuf.readInt()
-    val array: Array[Double] = new Array[Double](length)
-    val vec: Array[Double] = array.map(_ => byteBuf.readDouble())
+    val array: Array[Float] = new Array[Float](length)
+    val vec: Array[Float] = array.map(_ => byteBuf.readFloat())
     byteBuf.release()
     VecMolecule(id, vec)
   }

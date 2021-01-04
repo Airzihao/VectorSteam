@@ -17,10 +17,10 @@ import scala.util.Random
 object SteamImporterTest {
   val dims: Int = 128
   val vecCountNum = 1000
-  val stepLength: Int = 8 + 4 + 8*dims
+  val stepLength: Int = 8 + 4 + 4*dims
   val file = {
     val f = new File("./src/test/resources/testFile")
-        if(f.exists()) f.delete()
+    if(f.exists()) f.delete()
     f
   }
   val importer = new SteamImporter(file, dims)
@@ -37,7 +37,7 @@ class SteamImporterTest {
     Assert.assertEquals(vecCountNum, vecArray.length)
     val iter = vecArray.iterator
     exporter.writeVecMolecule(iter.next())
-    Assert.assertEquals(file.length(), stepLength)
+    Assert.assertEquals(stepLength, file.length())
     exporter.writeVecMolecule(iter.next())
     Assert.assertEquals(file.length(), stepLength*2)
     exporter.writeBatch(iter)
@@ -50,7 +50,7 @@ class SteamImporterTest {
     val randomIndex = Random.nextInt(vecCountNum)
     val vecMolecule = importer.getVecMolecule(randomIndex)
     Assert.assertEquals(vecArray(randomIndex).id, vecMolecule.id)
-    Assert.assertArrayEquals(vecArray(randomIndex).vec, vecMolecule.vec, 0.0001)
+    Assert.assertArrayEquals(vecArray(randomIndex).vec, vecMolecule.vec, 0.0001f)
   }
 
   @Test
@@ -61,9 +61,8 @@ class SteamImporterTest {
       val vec1 = iter1.next()
       val vec2 = iter2.next()
       Assert.assertEquals(vec2.id, vec1.id)
-      Assert.assertArrayEquals(vec2.vec, vec1.vec, 0.001)
+      Assert.assertArrayEquals(vec2.vec, vec1.vec, 0.001f)
     }
   }
-
 
 }

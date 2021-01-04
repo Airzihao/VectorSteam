@@ -8,7 +8,7 @@ package fun.airzihao.VectorSteam.VectorDistance
  */
 object JaccardSim {
   //  Jaccard similarity coefficient
-  def jaccardSim(vector1: Array[Double], vector2: Array[Double], delta: Double = 0.0001): Double = {
+  def jaccardSim(vector1: Array[Float], vector2: Array[Float], delta: Float = 0.0001f): Float = {
     val length = vector1.length
     val replicItemCount = vector1.zip(vector2).map(pair => {
       if(math.abs(pair._1 - pair._2)< delta) 1
