@@ -13,6 +13,7 @@
         <module>server</module>
         <module>performance</module>
         <module>tools</module>
+        <module>commons</module>
     </modules>
 
     <properties>

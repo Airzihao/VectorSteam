@@ -6,24 +6,11 @@
         <artifactId>VectorSteam</artifactId>
         <groupId>fun.airzihao</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>performance</artifactId>
+    <artifactId>commons</artifactId>
     <version>0.0.1</version>
-    <dependencies>
-        <dependency>
-            <groupId>fun.airzihao</groupId>
-            <artifactId>tools</artifactId>
-            <version>0.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>fun.airzihao</groupId>
-            <artifactId>kernel</artifactId>
-            <version>0.0.1</version>
-        </dependency>
-    </dependencies>
 
 
 </project>
