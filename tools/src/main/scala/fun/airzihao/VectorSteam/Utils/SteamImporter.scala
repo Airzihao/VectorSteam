@@ -19,11 +19,5 @@ trait SteamImporter {
     fis.read(bytes)
     bytes
   }
-
-  abstract class SteamIter[T](is: BufferedInputStream) extends Iterator[T] {
-    override def hasNext: Boolean = is.available() >= stepLength
-    val bytes = new Array[Byte](stepLength)
-    override def next(): T;
-  }
 }
 

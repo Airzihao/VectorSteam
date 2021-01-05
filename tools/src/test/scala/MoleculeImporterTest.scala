@@ -1,11 +1,10 @@
 import java.io.File
 
 import fun.airzihao.VectorSteam.Utils.{MoleculeImporter, SteamExporter}
-import fun.airzihao.VectorSteam.kernel.VecMolecule
 import org.junit.runners.MethodSorters
 import org.junit.{Assert, FixMethodOrder, Test}
 import MoleculeImporterTest.{file, importer, stepLength, vecCountNum, vecMolecules}
-import fun.airzihao.VectorSteam.commons.{MetaDataManager, Utils, VectorGenerator}
+import fun.airzihao.VectorSteam.commons.{MetaDataManager, Utils, VecMolecule, VectorGenerator}
 
 import scala.util.Random
 /**

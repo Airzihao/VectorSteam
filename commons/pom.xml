@@ -12,5 +12,13 @@
     <artifactId>commons</artifactId>
     <version>0.0.1</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-buffer</artifactId>
+            <version>4.1.22.Final</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

@@ -37,5 +37,4 @@ class SteamExporterTest {
     iter1.zip(iter2).foreach(pair => Assert.assertArrayEquals(pair._1.vec, pair._2, 0.001f))
   }
 
-
 }

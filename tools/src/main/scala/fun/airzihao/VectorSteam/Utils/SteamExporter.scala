@@ -3,8 +3,8 @@ package fun.airzihao.VectorSteam.Utils
 import java.io.{BufferedOutputStream, FileOutputStream}
 import java.io.File
 
-import fun.airzihao.VectorSteam.Serializer.VectorSerializer
-import fun.airzihao.VectorSteam.kernel.VecMolecule
+import fun.airzihao.VectorSteam.commons.Serializer.VectorSerializer
+import fun.airzihao.VectorSteam.commons.VecMolecule
 
 /**
  * @Author: Airzihao

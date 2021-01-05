@@ -18,7 +18,6 @@ class VectorGeneratorTest {
     val v_8 = generator.genVector(8)
     Assert.assertEquals(8, v_8.length)
     Assert.assertEquals(true, v_8.isInstanceOf[Vector[Float]])
-    println(v_8)
   }
 
   @Test

@@ -2,8 +2,8 @@ package fun.airzihao.VectorSteam.Utils
 
 import java.io.{BufferedInputStream, File, FileInputStream}
 
-import fun.airzihao.VectorSteam.Serializer.VectorSerializer
-import fun.airzihao.VectorSteam.commons.Utils
+import fun.airzihao.VectorSteam.commons.Serializer.VectorSerializer
+import fun.airzihao.VectorSteam.commons.{SteamIter, Utils}
 
 /**
   * @Author: Airzihao
@@ -17,7 +17,7 @@ class VecArrayImporter(file: File, dims: Int) extends SteamImporter {
 
   def getVecArray: Iterator[Array[Float]] = {
     val bis = new BufferedInputStream(new FileInputStream(file), 10*1024*1024)
-    new VecArrayIter(bis)
+    new VecArrayIter(bis, stepLength)
   }
 
   def getVec(index: Int): Array[Float] = {
@@ -25,7 +25,7 @@ class VecArrayImporter(file: File, dims: Int) extends SteamImporter {
     VectorSerializer.deserializeArray(bytes)
   }
 
-  class VecArrayIter(bis: BufferedInputStream) extends SteamIter[Array[Float]](bis) {
+  class VecArrayIter(bis: BufferedInputStream, stepLength: Int) extends SteamIter[Array[Float]](bis, stepLength) {
     def next(): Array[Float] = {
       bis.read(bytes)
       VectorSerializer.deserializeArray(bytes)
