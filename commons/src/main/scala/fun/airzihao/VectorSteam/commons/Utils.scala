@@ -18,6 +18,15 @@ object Utils {
     t
   }
 
+  def timing[T](message: String, f: => T): T = {
+    val t1 = System.currentTimeMillis()
+    val t = f
+    val t2 = System.currentTimeMillis()
+    //    logger.debug(s"time cost: ${t2 - t1} ms")
+    println(s"$message time cost: ${t2 - t1} ms")
+    t
+  }
+
   def getVecMoleculeSize(dims: Int): Int = 8 + 4 + 4*dims
   def getVecArraySize(dims: Int): Int = 4 + 4*dims
 }

@@ -1,7 +1,8 @@
-package fun.airzihao.VectorSteam.Serializer
+package fun.airzihao.VectorSteam.commons.Serializer
 
-import fun.airzihao.VectorSteam.kernel.VecMolecule
+import fun.airzihao.VectorSteam.commons.VecMolecule
 import io.netty.buffer.{ByteBuf, ByteBufAllocator, Unpooled}
+import sun.security.util.Length
 
 /**
  * @Author: Airzihao
@@ -36,6 +37,16 @@ object VectorSerializer {
     val length: Int = byteBuf.readInt()
     val array: Array[Float] = new Array[Float](length)
     val vec: Array[Float] = array.map(_ => byteBuf.readFloat())
+    byteBuf.release()
+    vec
+  }
+
+  def deserializeFvecArray(bytes: Array[Byte], length: Int): Array[Float] = {
+    val byteBuf: ByteBuf = Unpooled.wrappedBuffer(bytes)
+    // blank float, drop
+    byteBuf.readFloatLE()
+    val array: Array[Float] = new Array[Float](length)
+    val vec: Array[Float] = array.map(_ => byteBuf.readFloatLE())
     byteBuf.release()
     vec
   }
