@@ -1,5 +1,5 @@
-import fun.airzihao.VectorSteam.Utils.Utils.timing
-import fun.airzihao.VectorSteam.Utils.VectorGenerator
+import fun.airzihao.VectorSteam.commons.Utils.timing
+import fun.airzihao.VectorSteam.commons.VectorGenerator
 import org.junit.runners.MethodSorters
 import org.junit.{Assert, FixMethodOrder, Test}
 

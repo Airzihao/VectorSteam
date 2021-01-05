@@ -1,4 +1,4 @@
-package fun.airzihao.VectorSteam.Utils
+package fun.airzihao.VectorSteam.commons
 
 /**
  * @Author: Airzihao
@@ -18,8 +18,6 @@ object Utils {
     t
   }
 
-  def vecLength(dims: Int): Int = {
-    // id:Long, len: Int, arr[Float]
-    8 + 4 + 4*dims
-  }
+  def getVecMoleculeSize(dims: Int): Int = 8 + 4 + 4*dims
+  def getVecArraySize(dims: Int): Int = 4 + 4*dims
 }
