@@ -25,7 +25,20 @@ class SteamExporter (file: File) {
     fos.flush()
   }
 
-  def close(): Unit = {
-    fos.close()
+}
+
+// The following class may be used in tests.
+class VecExporter (file: File) {
+  val fos: BufferedOutputStream = new BufferedOutputStream(new FileOutputStream(file))
+
+  def writeVec(vec: Array[Float]) = {
+    fos.write(VectorSerializer.serialize(vec))
+    fos.flush()
   }
+
+  def writeBatch(iter: Iterator[Array[Float]]) = {
+    iter.foreach(vec => fos.write(VectorSerializer.serialize(vec)))
+    fos.flush()
+  }
+
 }

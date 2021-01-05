@@ -1,12 +1,13 @@
 package fun.airzihao.VectorSteam.Serializer
-import fun.airzihao.VectorSteam.Utils.Utils.timing
-import fun.airzihao.VectorSteam.Utils.VectorGenerator
+import fun.airzihao.VectorSteam.commons.VectorGenerator
+import fun.airzihao.VectorSteam.commons.Utils.timing
 import fun.airzihao.VectorSteam.kernel.VecMolecule
 import org.junit.runners.MethodSorters
 import org.junit.{Assert, FixMethodOrder, Test}
-import scala.concurrent.{Await, Future}
+
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.DurationInt
+import scala.concurrent.{Await, Future}
 
 /**
  * @Author: Airzihao
