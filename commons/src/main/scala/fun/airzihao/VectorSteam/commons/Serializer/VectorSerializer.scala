@@ -44,7 +44,7 @@ object VectorSerializer {
   def deserializeFvecArray(bytes: Array[Byte], length: Int): Array[Float] = {
     val byteBuf: ByteBuf = Unpooled.wrappedBuffer(bytes)
     // blank float, drop
-    byteBuf.readFloatLE()
+    val a = byteBuf.readIntLE()
     val array: Array[Float] = new Array[Float](length)
     val vec: Array[Float] = array.map(_ => byteBuf.readFloatLE())
     byteBuf.release()

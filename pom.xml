@@ -13,6 +13,7 @@
         <module>server</module>
         <module>tools</module>
         <module>commons</module>
+        <module>steam-test</module>
     </modules>
 
     <properties>
