@@ -1,7 +1,7 @@
 package fun.airzihao.VectorSteam.Serializer
-import fun.airzihao.VectorSteam.commons.VectorGenerator
+import fun.airzihao.VectorSteam.commons.Serializer.VectorSerializer
+import fun.airzihao.VectorSteam.commons.{VecMolecule, VectorGenerator}
 import fun.airzihao.VectorSteam.commons.Utils.timing
-import fun.airzihao.VectorSteam.kernel.VecMolecule
 import org.junit.runners.MethodSorters
 import org.junit.{Assert, FixMethodOrder, Test}
 
