@@ -1,6 +1,8 @@
 package fun.airzihao.VectorSteam.search
 
-import fun.airzihao.VectorSteam.commons.{Asending, Desending, OrderMethod, SortedVecMolecules, VecMolecule}
+import java.io.{BufferedInputStream, File, FileInputStream}
+
+import fun.airzihao.VectorSteam.commons.{Asending, BasicTypeTransformer, Desending, OrderMethod, SortedVecMolecules, Spliter, Utils, VecMolecule, VecMoleculeIter}
 
 import scala.collection.mutable
 
@@ -12,13 +14,28 @@ import scala.collection.mutable
  */
 object SearchEngine {
 
-  def getNearestMolecule(molecule: VecMolecule, dataset: Iterable[VecMolecule],
+  var path: String = ""
+
+  def setSearchPath(p: String) = path = p
+
+  //get hashvalue
+  //get file, get iter
+  //invoke
+  def getNearestMolecule(molecule: VecMolecule, spliter: Spliter, path: String,
                          measureFunc:(Array[Float], Array[Float]) => Float, orderMethod: OrderMethod): VecMolecule = {
-    orderMethod match {
-      case Asending => dataset.minBy(mole => measureFunc(molecule.vec, mole.vec))
-      case Desending => dataset.maxBy(mole => measureFunc(molecule.vec, mole.vec))
-    }
+    getKNearestMolecules(molecule, spliter, path, measureFunc, orderMethod, 1).head
   }
+
+  def getKNearestMolecules(molecule: VecMolecule, spliter: Spliter, path: String,
+                         measureFunc:(Array[Float], Array[Float]) => Float, orderMethod: OrderMethod, k: Int): Array[VecMolecule] = {
+    val partId: Int = BasicTypeTransformer.boolArr2Int(spliter.getHashValue(molecule))
+    println(partId)
+    val stepLength = Utils.getVecMoleculeSize(molecule.vec.length)
+    val bis = new BufferedInputStream(new FileInputStream(new File(s"$path/$partId")))
+    val iter = new VecMoleculeIter(bis, stepLength)
+    getKNearestMolecules(molecule, iter, measureFunc, orderMethod, k)
+  }
+
 
   def getKNearestMolecules(molecule: VecMolecule, iter: Iterator[VecMolecule],
                           measureFunc:(Array[Float], Array[Float]) => Float, orderMethod: OrderMethod, k: Int): Array[VecMolecule] = {
@@ -48,4 +65,11 @@ object SearchEngine {
     else sortedArray.slice(0,k).map(item => dataArray(item._2))
   }
 
+  def getNearestMolecule(molecule: VecMolecule, dataset: Iterable[VecMolecule],
+                         measureFunc:(Array[Float], Array[Float]) => Float, orderMethod: OrderMethod): VecMolecule = {
+    orderMethod match {
+      case Asending => dataset.minBy(mole => measureFunc(molecule.vec, mole.vec))
+      case Desending => dataset.maxBy(mole => measureFunc(molecule.vec, mole.vec))
+    }
+  }
 }
