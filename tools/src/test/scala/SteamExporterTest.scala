@@ -1,4 +1,4 @@
-import fun.airzihao.VectorSteam.Utils.{FvecFileImporter, MoleculeImporter, SteamExporter, VecArrayImporter}
+import fun.airzihao.VectorSteam.IOUtils.{FvecFileImporter, MoleculeImporter, SteamExporter, VecArrayImporter}
 import java.io.File
 
 import SteamExporterTest.{dims, exporter, importer, inputFile, outputFile}
@@ -17,7 +17,7 @@ object SteamExporterTest {
   val outputFile: File = new File("./src/test/resources/sift1m-mole")
   val inputFile: File = new File("./src/test/resources/sift_base.fvecs")
   val exporter: SteamExporter = new SteamExporter(outputFile)
-  val importer: FvecFileImporter = new FvecFileImporter(inputFile)
+  val importer: FvecFileImporter = new FvecFileImporter(inputFile, dims)
 }
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -33,7 +33,7 @@ class SteamExporterTest {
   @Test
   def test2(): Unit = {
     val iter1: Iterator[VecMolecule] = new MoleculeImporter(outputFile, dims).getVecMolecules
-    val iter2: Iterator[Array[Float]] = new FvecFileImporter(inputFile).getVecArray
+    val iter2: Iterator[Array[Float]] = new FvecFileImporter(inputFile, dims).getVecArray
     iter1.zip(iter2).foreach(pair => Assert.assertArrayEquals(pair._1.vec, pair._2, 0.001f))
   }
 

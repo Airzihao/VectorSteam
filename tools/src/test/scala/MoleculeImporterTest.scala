@@ -1,6 +1,6 @@
 import java.io.File
 
-import fun.airzihao.VectorSteam.Utils.{MoleculeImporter, SteamExporter}
+import fun.airzihao.VectorSteam.IOUtils.{MoleculeImporter, SteamExporter}
 import org.junit.runners.MethodSorters
 import org.junit.{Assert, FixMethodOrder, Test}
 import MoleculeImporterTest.{file, importer, stepLength, vecCountNum, vecMolecules}

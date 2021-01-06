@@ -1,6 +1,6 @@
 import java.io.File
 
-import fun.airzihao.VectorSteam.Utils.{SteamExporter, VecArrayImporter, VecExporter}
+import fun.airzihao.VectorSteam.IOUtils.{SteamExporter, VecArrayImporter, VecExporter}
 import fun.airzihao.VectorSteam.commons.{MetaDataManager, Utils, VecMolecule, VectorGenerator}
 import org.junit.{Assert, FixMethodOrder, Test}
 import org.junit.runners.MethodSorters

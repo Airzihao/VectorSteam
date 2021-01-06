@@ -1,4 +1,4 @@
-package fun.airzihao.VectorSteam.Utils
+package fun.airzihao.VectorSteam.IOUtils
 
 import java.io.{BufferedInputStream, File, FileInputStream}
 
@@ -12,13 +12,8 @@ import io.netty.buffer.Unpooled
  * @Date: Created at 17:04 2021/1/5
  * @Modified By:
  */
-class FvecFileImporter(file: File) {
+class FvecFileImporter(file: File, dims: Int) {
   val bis: BufferedInputStream = new BufferedInputStream(new FileInputStream(file))
-  val dims: Int = {
-    val bytes = new Array[Byte](4)
-    bis.read(bytes)
-    Unpooled.wrappedBuffer(bytes).readIntLE()
-  }
   val stepLength: Int = Utils.getVecArraySize(dims)
 
   def getVecArray: Iterator[Array[Float]] = {
