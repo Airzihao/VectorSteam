@@ -9,7 +9,7 @@ import org.junit.Assert
  */
 object TestBase {
 
-  def molesEquals(mole1: VecMolecule, mole2: VecMolecule): Unit = {
+  def molesEqual(mole1: VecMolecule, mole2: VecMolecule): Unit = {
     Assert.assertEquals(mole1.id, mole2.id)
     Assert.assertArrayEquals(mole1.vec, mole2.vec, 0.001f)
   }

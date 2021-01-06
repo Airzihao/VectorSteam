@@ -8,4 +8,9 @@ package fun.airzihao.VectorSteam.commons
  */
 
 //
-case class VecMolecule(id: Long, vec: Array[Float])
+trait Vec {
+  val vec: Seq[Float]
+}
+case class PureVec(vec: Seq[Float])
+case class VecMolecule(id: Long, vec: Array[Float]){
+}

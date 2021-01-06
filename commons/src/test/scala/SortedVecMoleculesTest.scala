@@ -1,7 +1,7 @@
+import TestBase.molesEqual
 import fun.airzihao.VectorSteam.commons.{Asending, Desending, SortedVecMolecules, VecMolecule}
 import org.junit.runners.MethodSorters
 import org.junit.{Assert, FixMethodOrder, Test}
-import TestBase.molesEquals
 
 /**
  * @Author: Airzihao
@@ -31,7 +31,7 @@ class SortedVecMoleculesTest {
     val result = sorter.sortedMoleculesWithDistance
     result.zip(asendResult).foreach(pair => {
       Assert.assertEquals(pair._2._1, pair._1._1, 0.001f)
-      molesEquals(pair._2._2, pair._1._2)
+      molesEqual(pair._2._2, pair._1._2)
     })
   }
 
@@ -44,7 +44,7 @@ class SortedVecMoleculesTest {
     val result = sorter.sortedMoleculesWithDistance
     result.zip(desendResult).foreach(pair => {
       Assert.assertEquals(pair._2._1, pair._1._1, 0.001f)
-      molesEquals(pair._2._2, pair._1._2)
+      molesEqual(pair._2._2, pair._1._2)
     })
   }
 
