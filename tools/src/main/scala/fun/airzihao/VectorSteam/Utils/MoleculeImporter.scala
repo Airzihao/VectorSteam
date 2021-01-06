@@ -25,8 +25,6 @@ class MoleculeImporter(file: File, dims: Int) extends SteamImporter {
     VectorSerializer.deserializeVecMolecule(bytes)
   }
 
-
-
 }
 
 

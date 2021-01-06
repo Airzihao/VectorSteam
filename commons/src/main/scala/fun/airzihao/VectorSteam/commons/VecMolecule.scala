@@ -1,4 +1,4 @@
-package fun.airzihao.VectorSteam.kernel
+package fun.airzihao.VectorSteam.commons
 
 /**
  * @Author: Airzihao
