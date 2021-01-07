@@ -1,9 +1,8 @@
 package fun.airzihao.VectorSteam.search
 
 import java.io.{BufferedInputStream, File, FileInputStream}
-
 import fun.airzihao.VectorSteam.VectorDistance.EuclideanDis
-import fun.airzihao.VectorSteam.commons.Utils.timing
+import fun.airzihao.VectorSteam.commons.Utils.BasicUtils.timing
 import fun.airzihao.VectorSteam.commons.{Asending, Desending, Utils, VecMolecule, VecMoleculeIter}
 import fun.airzihao.VectorSteam.search.SearchEngineTest.{dims, moleSet, setSize, sortedMoleArray, srcFile, targetMolecule}
 import org.junit.runners.MethodSorters
@@ -71,13 +70,13 @@ class SearchEngineTest {
 
   @Test
   def test4(): Unit = {
-    val iter = new VecMoleculeIter(new BufferedInputStream(new FileInputStream(srcFile), 10 * 1024 * 1024), Utils.getVecMoleculeSize(dims))
+    val iter = new VecMoleculeIter(new BufferedInputStream(new FileInputStream(srcFile), 10 * 1024 * 1024), Utils.BasicUtils.getVecMoleculeSize(dims))
     SearchEngine.getNearestMolecule(targetMolecule, iter, EuclideanDis.eucDis(_, _), Asending)
   }
 
   @Test
   def test5(): Unit = {
-    val iter = new VecMoleculeIter(new BufferedInputStream(new FileInputStream(srcFile), 10 * 1024 * 1024), Utils.getVecMoleculeSize(dims))
+    val iter = new VecMoleculeIter(new BufferedInputStream(new FileInputStream(srcFile), 10 * 1024 * 1024), Utils.BasicUtils.getVecMoleculeSize(dims))
     SearchEngine.getKNearestMolecules(targetMolecule, iter, EuclideanDis.eucDis(_, _), Asending, 5)
   }
 

@@ -33,11 +33,10 @@ class ChebyshevDisTest extends MinkowskiDisTest {
   }
 }
 
-class ManhattanDis extends MinkowskiDisTest {
+class ManhattanDisTest extends MinkowskiDisTest {
 
   @Test
   def test(): Unit ={
-//    val man = ManhattanDis
     Assert.assertEquals(0, ManhattanDis.manhattanDis(v1, v1), 0.001)
     Assert.assertEquals(7, ManhattanDis.manhattanDis(v0, v2), 0.001)
     Assert.assertEquals(7, ManhattanDis.manhattanDis(v2, v0), 0.001)

@@ -1,10 +1,7 @@
 package fun.airzihao.VectorSteam.search
 
 import java.io.{BufferedInputStream, File, FileInputStream}
-
-import fun.airzihao.VectorSteam.commons.{Asending, BasicTypeTransformer, Desending, OrderMethod, SortedVecMolecules, Spliter, Utils, VecMolecule, VecMoleculeIter}
-
-import scala.collection.mutable
+import fun.airzihao.VectorSteam.commons.{Utils, _}
 
 /**
  * @Author: Airzihao
@@ -18,9 +15,6 @@ object SearchEngine {
 
   def setSearchPath(p: String) = path = p
 
-  //get hashvalue
-  //get file, get iter
-  //invoke
   def getNearestMolecule(molecule: VecMolecule, spliter: Spliter, path: String,
                          measureFunc:(Array[Float], Array[Float]) => Float, orderMethod: OrderMethod): VecMolecule = {
     getKNearestMolecules(molecule, spliter, path, measureFunc, orderMethod, 1).head
@@ -28,9 +22,9 @@ object SearchEngine {
 
   def getKNearestMolecules(molecule: VecMolecule, spliter: Spliter, path: String,
                          measureFunc:(Array[Float], Array[Float]) => Float, orderMethod: OrderMethod, k: Int): Array[VecMolecule] = {
-    val partId: Int = BasicTypeTransformer.boolArr2Int(spliter.getHashValue(molecule))
+    val partId: Int = spliter.getPartitionId(molecule)
     println(partId)
-    val stepLength = Utils.getVecMoleculeSize(molecule.vec.length)
+    val stepLength = Utils.BasicUtils.getVecMoleculeSize(molecule.vec.length)
     val bis = new BufferedInputStream(new FileInputStream(new File(s"$path/$partId")))
     val iter = new VecMoleculeIter(bis, stepLength)
     getKNearestMolecules(molecule, iter, measureFunc, orderMethod, k)
