@@ -1,11 +1,11 @@
-import java.io.File
-
-import fun.airzihao.VectorSteam.IOUtils.{MoleculeImporter, SteamExporter}
+import MoleculeImporterTest._
+import fun.airzihao.VectorSteam.IOTools.{MoleculeImporter, SteamExporter}
+import fun.airzihao.VectorSteam.commons.Utils.VectorGenerator
+import fun.airzihao.VectorSteam.commons.{MetaDataManager, Utils, VecMolecule}
 import org.junit.runners.MethodSorters
 import org.junit.{Assert, FixMethodOrder, Test}
-import MoleculeImporterTest.{file, importer, stepLength, vecCountNum, vecMolecules}
-import fun.airzihao.VectorSteam.commons.{MetaDataManager, Utils, VecMolecule, VectorGenerator}
 
+import java.io.File
 import scala.util.Random
 /**
  * @Author: Airzihao
@@ -17,7 +17,7 @@ import scala.util.Random
 object MoleculeImporterTest {
   val dims: Int = 128
   val vecCountNum = 1000
-  val stepLength: Int = Utils.getVecMoleculeSize(dims)
+  val stepLength: Int = Utils.BasicUtils.getVecMoleculeSize(dims)
   val file = {
     val f = new File("./src/test/resources/testFile")
     if(f.exists()) f.delete()

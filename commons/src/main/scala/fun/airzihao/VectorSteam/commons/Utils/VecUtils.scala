@@ -1,4 +1,6 @@
-package fun.airzihao.VectorSteam.commons
+package fun.airzihao.VectorSteam.commons.Utils
+
+import fun.airzihao.VectorSteam.commons.PureVec
 
 /**
  * @Author: Airzihao
@@ -9,7 +11,7 @@ package fun.airzihao.VectorSteam.commons
 object VecUtils {
   def halfReverse(pureVec: PureVec): PureVec = {
     val vec = pureVec.vec.zipWithIndex.map(item => {
-      if(item._2 % 2 == 1) -item._1
+      if (item._2 % 2 == 1) -item._1
       else item._1
     })
     PureVec(vec)

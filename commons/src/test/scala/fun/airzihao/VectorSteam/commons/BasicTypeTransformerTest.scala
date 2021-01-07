@@ -1,4 +1,6 @@
-import fun.airzihao.VectorSteam.commons.BasicTypeTransformer
+package fun.airzihao.VectorSteam.commons
+
+import fun.airzihao.VectorSteam.commons.Utils.BasicTypeTransformer
 import org.junit.{Assert, Test}
 
 /**

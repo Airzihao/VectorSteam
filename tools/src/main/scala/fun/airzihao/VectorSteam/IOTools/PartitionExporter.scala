@@ -1,8 +1,8 @@
-package fun.airzihao.VectorSteam.IOUtils
+package fun.airzihao.VectorSteam.IOTools
 
 import java.io.File
 
-import fun.airzihao.VectorSteam.commons.{BasicTypeTransformer, Spliter, VecMolecule}
+import fun.airzihao.VectorSteam.commons.{Spliter, VecMolecule}
 
 /**
  * @Author: Airzihao
@@ -28,8 +28,7 @@ class PartitionExporter(spliter: Spliter, iter: Iterator[VecMolecule], path: Str
 
   def export(): Unit = {
     iter.foreach(mole => {
-      val hashValue = spliter.getHashValue(mole)
-      val partId: Int = BasicTypeTransformer.boolArr2Int(hashValue)
+      val partId: Int = spliter.getPartitionId(mole)
       exportMap(partId).writeVecMolecule(mole)
     })
   }

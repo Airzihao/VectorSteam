@@ -8,8 +8,7 @@ package fun.airzihao.VectorSteam.commons
  */
 class SortedVecMolecules(maxSize: Int, orderMethod: OrderMethod) {
   private var _sortedResultArray: Array[(Float, VecMolecule)] = new Array[(Float, VecMolecule)](0)
-    //.map(_ => (0f, VecMolecule(-1, Array.emptyFloatArray)))
-  // sortBy, default to be asending.
+
   private def _sort: Unit = {
     _sortedResultArray = orderMethod match {
       case Asending => _sortedResultArray.sortBy(item => item._1)
@@ -28,6 +27,7 @@ class SortedVecMolecules(maxSize: Int, orderMethod: OrderMethod) {
       _fillHungryArray(disPair)
     }
   }
+
   private def _insertToFullArray(disPair: (Float, VecMolecule)): Unit = {
     _sortedResultArray = (disPair +: _sortedResultArray.dropRight(1))
     _sort

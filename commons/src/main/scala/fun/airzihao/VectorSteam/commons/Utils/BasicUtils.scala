@@ -1,4 +1,4 @@
-package fun.airzihao.VectorSteam.commons
+package fun.airzihao.VectorSteam.commons.Utils
 
 /**
  * @Author: Airzihao
@@ -8,7 +8,7 @@ package fun.airzihao.VectorSteam.commons
  */
 
 
-object Utils {
+object BasicUtils {
   def timing[T](f: => T): T = {
     val t1 = System.currentTimeMillis()
     val t = f
@@ -27,6 +27,7 @@ object Utils {
     t
   }
 
-  def getVecMoleculeSize(dims: Int): Int = 8 + 4 + 4*dims
-  def getVecArraySize(dims: Int): Int = 4 + 4*dims
+  def getVecMoleculeSize(dims: Int): Int = 8 + 4 + 4 * dims
+
+  def getVecArraySize(dims: Int): Int = 4 + 4 * dims
 }

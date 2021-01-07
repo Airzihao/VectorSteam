@@ -1,4 +1,4 @@
-package fun.airzihao.VectorSteam.IOUtils
+package fun.airzihao.VectorSteam.IOTools
 
 import java.io.{BufferedInputStream, File, FileInputStream}
 

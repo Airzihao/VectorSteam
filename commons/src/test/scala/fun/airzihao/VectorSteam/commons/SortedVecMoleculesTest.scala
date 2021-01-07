@@ -1,5 +1,6 @@
-import TestBase.molesEqual
-import fun.airzihao.VectorSteam.commons.{Asending, Desending, SortedVecMolecules, VecMolecule}
+package fun.airzihao.VectorSteam.commons
+
+import fun.airzihao.VectorSteam.commons.TestBase.molesEqual
 import org.junit.runners.MethodSorters
 import org.junit.{Assert, FixMethodOrder, Test}
 

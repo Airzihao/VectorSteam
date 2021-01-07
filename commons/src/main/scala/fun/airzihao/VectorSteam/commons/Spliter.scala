@@ -8,5 +8,5 @@ package fun.airzihao.VectorSteam.commons
  */
 trait Spliter {
   val partitionCount: Int
-  def getHashValue(mole: VecMolecule): Array[Boolean]
+  def getPartitionId(mole: VecMolecule): Int
 }

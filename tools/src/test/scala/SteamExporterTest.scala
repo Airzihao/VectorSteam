@@ -1,4 +1,4 @@
-import fun.airzihao.VectorSteam.IOUtils.{FvecFileImporter, MoleculeImporter, SteamExporter, VecArrayImporter}
+import fun.airzihao.VectorSteam.IOTools.{FvecFileImporter, MoleculeImporter, SteamExporter, VecArrayImporter}
 import java.io.File
 
 import SteamExporterTest.{dims, exporter, importer, inputFile, outputFile}

@@ -1,12 +1,13 @@
-package fun.airzihao.VectorSteam.Serializer
-import fun.airzihao.VectorSteam.commons.Serializer.VectorSerializer
-import fun.airzihao.VectorSteam.commons.{VecMolecule, VectorGenerator}
-import fun.airzihao.VectorSteam.commons.Utils.timing
+package fun.airzihao.VectorSteam.commons.Serializer
+
+import fun.airzihao.VectorSteam.commons.Utils.BasicUtils.timing
+import fun.airzihao.VectorSteam.commons.Utils.VectorGenerator
+import fun.airzihao.VectorSteam.commons.VecMolecule
 import org.junit.runners.MethodSorters
 import org.junit.{Assert, FixMethodOrder, Test}
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.duration.DurationInt
+import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, Future}
 
 /**
@@ -49,8 +50,8 @@ class VectorSerializerTest {
       println("deserialize-array")
       timing(for(i<-1 to repeatCount) serializer.deserializeArray(bytesArray))
     }
-    Await.ready(f1, 10.seconds)
-    Await.ready(f2, 10.seconds)
+    Await.ready(f1, Duration(10, "seconds"))
+    Await.ready(f2, Duration(10, "seconds"))
     val f3 = Future{
       println("serialize-mole")
       timing(for(i<-1 to repeatCount) serializer.serialize(molecule))
@@ -59,8 +60,8 @@ class VectorSerializerTest {
       println("deserialize-mole")
       timing(for(i<-1 to repeatCount) serializer.deserializeVecMolecule(bytesVecMolecule))
     }
-    Await.ready(f3, 10.seconds)
-    Await.ready(f4, 10.seconds)
+    Await.ready(f3, Duration(10, "seconds"))
+    Await.ready(f4, Duration(10, "seconds"))
   }
 
 }

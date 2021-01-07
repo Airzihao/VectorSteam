@@ -1,9 +1,9 @@
-package fun.airzihao.VectorSteam.IOUtils
+package fun.airzihao.VectorSteam.IOTools
 
 import java.io.{BufferedInputStream, File, FileInputStream}
-
 import fun.airzihao.VectorSteam.commons.Serializer.VectorSerializer
-import fun.airzihao.VectorSteam.commons.{Utils, VecMolecule, VecMoleculeIter}
+import fun.airzihao.VectorSteam.commons.Utils.BasicUtils
+import fun.airzihao.VectorSteam.commons.{VecMolecule, VecMoleculeIter}
 
 /**
  * @Author: Airzihao
@@ -13,7 +13,7 @@ import fun.airzihao.VectorSteam.commons.{Utils, VecMolecule, VecMoleculeIter}
  */
 class MoleculeImporter(file: File, dims: Int) extends SteamImporter {
   override val srcFile: File = file
-  override val stepLength: Int = Utils.getVecMoleculeSize(dims)
+  override val stepLength: Int = BasicUtils.getVecMoleculeSize(dims)
 
   def getVecMolecules: Iterator[VecMolecule] = {
     val bis = new BufferedInputStream(new FileInputStream(file), 10 * 1024 * 1024)

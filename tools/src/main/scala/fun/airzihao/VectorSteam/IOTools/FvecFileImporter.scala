@@ -1,9 +1,9 @@
-package fun.airzihao.VectorSteam.IOUtils
+package fun.airzihao.VectorSteam.IOTools
 
 import java.io.{BufferedInputStream, File, FileInputStream}
-
 import fun.airzihao.VectorSteam.commons.Serializer.VectorSerializer
-import fun.airzihao.VectorSteam.commons.{SteamIter, Utils}
+import fun.airzihao.VectorSteam.commons.SteamIter
+import fun.airzihao.VectorSteam.commons.Utils.BasicUtils
 import io.netty.buffer.Unpooled
 
 /**
@@ -14,7 +14,7 @@ import io.netty.buffer.Unpooled
  */
 class FvecFileImporter(file: File, dims: Int) {
   val bis: BufferedInputStream = new BufferedInputStream(new FileInputStream(file))
-  val stepLength: Int = Utils.getVecArraySize(dims)
+  val stepLength: Int = BasicUtils.getVecArraySize(dims)
 
   def getVecArray: Iterator[Array[Float]] = {
     new VecArrayIter(bis, stepLength)

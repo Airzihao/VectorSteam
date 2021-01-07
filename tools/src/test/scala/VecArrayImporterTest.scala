@@ -1,11 +1,11 @@
-import java.io.File
-
-import fun.airzihao.VectorSteam.IOUtils.{SteamExporter, VecArrayImporter, VecExporter}
-import fun.airzihao.VectorSteam.commons.{MetaDataManager, Utils, VecMolecule, VectorGenerator}
-import org.junit.{Assert, FixMethodOrder, Test}
+import VecArrayImporterTest._
+import fun.airzihao.VectorSteam.IOTools.{VecArrayImporter, VecExporter}
+import fun.airzihao.VectorSteam.commons.Utils
+import fun.airzihao.VectorSteam.commons.Utils.VectorGenerator
 import org.junit.runners.MethodSorters
-import VecArrayImporterTest.{dims, file, generator, importer, stepLength, vecArray, vecCountNum}
+import org.junit.{Assert, FixMethodOrder, Test}
 
+import java.io.File
 import scala.util.Random
 
 /**
@@ -17,7 +17,7 @@ import scala.util.Random
 object VecArrayImporterTest {
   val dims: Int = 128
   val vecCountNum = 1000
-  val stepLength: Int = Utils.getVecArraySize(dims)
+  val stepLength: Int = Utils.BasicUtils.getVecArraySize(dims)
   val file = {
     val f = new File("./src/test/resources/testFile")
     if(f.exists()) f.delete()

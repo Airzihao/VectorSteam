@@ -1,4 +1,4 @@
-package fun.airzihao.VectorSteam.commons
+package fun.airzihao.VectorSteam.commons.Utils
 
 /**
  * @Author: Airzihao
@@ -6,6 +6,7 @@ package fun.airzihao.VectorSteam.commons
  * @Date: Created at 11:32 2021/1/6
  * @Modified By:
  */
+
 object BasicTypeTransformer {
 
   def boolArr2String(boolArr: Array[Boolean]): String = {

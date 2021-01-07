@@ -1,4 +1,5 @@
-import fun.airzihao.VectorSteam.commons.VecMolecule
+package fun.airzihao.VectorSteam.commons
+
 import org.junit.Assert
 
 /**
