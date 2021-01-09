@@ -1,5 +1,6 @@
 import MoleculeImporterTest._
 import fun.airzihao.VectorSteam.IOTools.{MoleculeImporter, SteamExporter}
+import fun.airzihao.VectorSteam.commons.Utils.BasicUtils.timing
 import fun.airzihao.VectorSteam.commons.Utils.VectorGenerator
 import fun.airzihao.VectorSteam.commons.{MetaDataManager, Utils, VecMolecule}
 import org.junit.runners.MethodSorters
@@ -62,6 +63,22 @@ class MoleculeImporterTest {
       Assert.assertEquals(vec2.id, vec1.id)
       Assert.assertArrayEquals(vec2.vec, vec1.vec, 0.001f)
     }
+  }
+
+  @Test
+  def test4(): Unit ={
+    val file = new File("./src/test/resources/sift1m-mole")
+    val _importer = new MoleculeImporter(file, dims)
+    val iter = _importer.getVecMolecules
+    timing(while (iter.hasNext) {
+      val vec = iter.next()
+    })
+
+    val _importer2 = new MoleculeImporter(file, dims)
+    val multiIter = _importer2.getVecMolecules
+    timing(while (multiIter.hasNext) {
+      val vec = multiIter.next()
+    })
   }
 
 }
