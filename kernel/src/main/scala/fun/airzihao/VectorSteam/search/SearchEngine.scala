@@ -15,6 +15,23 @@ object SearchEngine {
 
   def setSearchPath(p: String) = path = p
 
+  def getMoleculesByThreshold(molecule: VecMolecule, spliter: Spliter, path: String,
+                              measureFunc: (Array[Float], Array[Float]) => Float, orderMethod: OrderMethod, threshold: Float): Array[VecMolecule] = {
+    val partId: Int = spliter.getPartitionId(molecule)
+    val stepLength = Utils.BasicUtils.getVecMoleculeSize(molecule.vec.length)
+    val bis = new BufferedInputStream(new FileInputStream(new File(s"$path/$partId")))
+    val iter = new VecMoleculeIter(bis, stepLength)
+    getMoleculesByThreshold(molecule, iter, measureFunc, orderMethod, threshold)
+  }
+
+  def getMoleculesByThreshold(molecule: VecMolecule, iter: Iterator[VecMolecule],
+                             measureFunc: (Array[Float], Array[Float]) => Float, orderMethod: OrderMethod, threshold: Float): Array[VecMolecule] = {
+    orderMethod match {
+      case Asending => iter.filter(mole => measureFunc(molecule.vec, mole.vec) <= threshold).toArray
+      case Desending => iter.filter(mole => measureFunc(molecule.vec, mole.vec) >= threshold).toArray
+    }
+  }
+
   def getNearestMolecule(molecule: VecMolecule, spliter: Spliter, path: String,
                          measureFunc:(Array[Float], Array[Float]) => Float, orderMethod: OrderMethod): VecMolecule = {
     getKNearestMolecules(molecule, spliter, path, measureFunc, orderMethod, 1).head
@@ -23,7 +40,6 @@ object SearchEngine {
   def getKNearestMolecules(molecule: VecMolecule, spliter: Spliter, path: String,
                          measureFunc:(Array[Float], Array[Float]) => Float, orderMethod: OrderMethod, k: Int): Array[VecMolecule] = {
     val partId: Int = spliter.getPartitionId(molecule)
-    println(partId)
     val stepLength = Utils.BasicUtils.getVecMoleculeSize(molecule.vec.length)
     val bis = new BufferedInputStream(new FileInputStream(new File(s"$path/$partId")))
     val iter = new VecMoleculeIter(bis, stepLength)
@@ -64,6 +80,14 @@ object SearchEngine {
     orderMethod match {
       case Asending => dataset.minBy(mole => measureFunc(molecule.vec, mole.vec))
       case Desending => dataset.maxBy(mole => measureFunc(molecule.vec, mole.vec))
+    }
+  }
+
+  def getMoleculesByThreshold(molecule: VecMolecule, dataset: Iterable[VecMolecule],
+                              measureFunc: (Array[Float], Array[Float]) => Float, orderMethod: OrderMethod, threshold: Float): Iterable[VecMolecule] = {
+    orderMethod match {
+      case Asending => dataset.filter(mole => measureFunc(molecule.vec, mole.vec) <= threshold)
+      case Desending => dataset.filter(mole => measureFunc(molecule.vec, mole.vec) >= threshold)
     }
   }
 }
