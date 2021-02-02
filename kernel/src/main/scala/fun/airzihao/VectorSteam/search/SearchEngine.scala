@@ -11,6 +11,7 @@ import fun.airzihao.VectorSteam.commons.{Utils, _}
  */
 object SearchEngine {
 
+  // TODO：Async query
   var path: String = ""
 
   def setSearchPath(p: String) = path = p
@@ -45,7 +46,6 @@ object SearchEngine {
     val iter = new VecMoleculeIter(bis, stepLength)
     getKNearestMolecules(molecule, iter, measureFunc, orderMethod, k)
   }
-
 
   def getKNearestMolecules(molecule: VecMolecule, iter: Iterator[VecMolecule],
                           measureFunc:(Array[Float], Array[Float]) => Float, orderMethod: OrderMethod, k: Int): Array[VecMolecule] = {
